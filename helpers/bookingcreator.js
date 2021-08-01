@@ -1,5 +1,10 @@
 var dateFormat = require('dateformat');
 
+//import {counter, getCounter} from '../models/booking'
+
+var counter = require("../models/booking");
+const json = require("./bookings.json");
+
 var randomiseDate = function(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };
@@ -31,16 +36,11 @@ exports.createBooking = function(){
   var latestDate = new Date()
   latestDate.setDate(latestDate.getDate() + 3)
 
-  var booking = {
-    firstname: randomiseFirstName(),
-    lastname: randomiseLastName(),
-    totalprice: randomiseNumber(100,1000),
-    depositpaid: randomiseBool(),
-    bookingdates: {
-      checkin: dateFormat(checkInDate.setHours(15,0,0,0), "yyyy-mm-dd"),
-      checkout: dateFormat(randomiseDate(checkInDate,latestDate).setHours(12,0,0,0), "yyyy-mm-dd")
-    }
-  }
+  // static data seed modification
+  const json = require('./bookings.json');
+  let booking = json[counter.getCounter()];
+  // ******************************
+
 
   if(randomiseBool()){
     booking.additionalneeds = "Breakfast";

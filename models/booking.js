@@ -2,6 +2,7 @@ var Datastore = require('nedb');
 var db = new Datastore();
 var counter = 0;
 
+
 var booking = new Datastore();
 
 exports.getIDs = function(query, callback){
@@ -63,4 +64,9 @@ exports.deleteAll = function(callback){
   booking.remove({}, function(err){
     callback();
   });
+}
+
+// export counter variable to enable static data seed
+exports.getCounter = function (){
+  return counter;
 }

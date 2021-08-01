@@ -1,6 +1,9 @@
 # restful-booker
 A simple Node booking form for testing RESTful web services.
 
+# What's changed by azeljkovic
+Added [bookings.json](helpers/bookings.json) with static test data.
+
 # Requirements
 - Docker 17.09.0
 - Docker Compose 1.16.1
